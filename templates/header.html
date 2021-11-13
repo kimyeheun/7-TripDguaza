@@ -1,0 +1,41 @@
+{% extend 'templates/base.html' %}
+
+<header class="header" >
+        <div class="row">
+          <div class="col-md-10"><a>TripDgauza</a></div>
+          <div class="col-6 col-md-1"><a href='#' style="color:black; text-decoration-line: none;">로그인</a></div>
+          <div class="col-6 col-md-1"><a href='#' style="color:black; text-decoration-line: none;">회원가입</a></div>
+        </div>
+
+</header>
+
+<style>
+*{
+    margin: 0;
+    padding: 0;
+}
+div{
+    margin: 0;
+    padding: 0;
+}
+.header {
+    height: 70px;
+    background: #77D6C9;
+    position:sticky;
+    top:0px;
+}
+.row{
+    display: flex;
+    margin: 0 10px 0 10px;
+    align-items: center;
+    height: 65px;
+}
+.row a{
+    font-size: 18px;
+    color: #0EAE8C;
+    font-weight: bold;
+    text-decoration: none;
+    position:relative;
+    padding: 6px 12px;
+}
+</style>
