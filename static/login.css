@@ -1,0 +1,29 @@
+body {background-color:white;}
+#register_box{
+    background-color : white;
+    margin-top: 70px;
+  
+}
+#register_txt{
+    padding-top: 10px;
+    padding-bottom: 35px;
+}
+#container{
+    margin-left: 30px;
+    
+}
+.form-group{
+    width: 500px;
+    height: 50px;
+    margin:0 auto;
+    
+}
+/* 정보 입력칸 */
+.form-control{
+    height: 45px;
+}
+.btn{
+    width: 500px;
+    height: 45px;
+}
+.button { position: absolute; left: 50%; transform: translateX(-50%); text-decoration:none;font-family:Arial;box-shadow:#d6d6d6 1px 3px 2px;o-box-shadow:#d6d6d6 1px 3px 2px;-moz-box-shadow:#d6d6d6 1px 3px 2px;-webkit-box-shadow:#d6d6d6 1px 3px 2px;background:#77d6c9;background:-o-linear-gradient(90deg, #77d6c9, #0eae8b);background:-moz-linear-gradient( center top, #77d6c9 5%, #0eae8b 100% );background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #77d6c9), color-stop(1, #0eae8b) );filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#77d6c9', endColorstr='#0eae8b');background:-webkit-linear-gradient(#77d6c9, #0eae8b);background:-ms-linear-gradient(#77d6c9, #0eae8b);background:linear-gradient(#77d6c9, #0eae8b);text-indent:0px;line-height:30px;-moz-border-radius:25px;-webkit-border-radius:25px;border-radius:25px;text-align:center;vertical-align:middle;display:inline-block;font-size:20px;color:#ffffff;width:130px;height:60px;padding:13px;border-width:2px;border-style:solid;}.ClassName:active {box-shadow:#d6d6d6 1px 0 2px;o-box-shadow:#d6d6d6 1px 0 2px;-moz-box-shadow:#d6d6d6 1px 0 2px;-webkit-box-shadow:#d6d6d6 1px 0 2px;position:relative;top:3px}.ClassName:hover {background:#0eae8b;background:-o-linear-gradient(90deg, #0eae8b, #77d6c9);background:-moz-linear-gradient( center top, #0eae8b 5%, #77d6c9 100% );background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #0eae8b), color-stop(1, #77d6c9) );filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#0eae8b', endColorstr='#77d6c9');background:-webkit-linear-gradient(#0eae8b, #77d6c9);background:-ms-linear-gradient(#0eae8b, #77d6c9);background:linear-gradient(#0eae8b, #77d6c9);}
