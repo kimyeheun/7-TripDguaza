@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block stylesheet %}
+    <link rel="stylesheet" href="{% static 'static/login.css' %}">
+{% endblock %}
+
+{% block head_title %}로그인 페이지{% endblock %}
+
+{% block main_area %}
+<br><br><br><br><br><br><br>
+          <!-- 로그인 -->
+<div id="register_box">
+    <div id="register_txt">
+    <div id= "container">
+        <div class = "row mt-5">
+            <div class = "col-12 text-center">
+                <h1 style="color: #0EAE8c;">로그인</h1>
+            </div>
+        </div>
+    </div>
+    <br>
+<!-- 아이디 -->
+<div class="form-group">
+    <input
+        type="text"
+        class="form-control"
+        id="userid"
+        placeholder="아이디"
+        name="userid">
+</div>
+<br>
+<br>
+<!-- 비밀번호 -->
+<div class="form-group">
+    <input
+        type="password"
+        class="form-control"
+        id="password1" placeholder="비밀번호"
+        name="password1">
+</div>
+<br>
+<a href='#' class='button'>로그인</a>
+</div>
+</div>
+{% endblock %}

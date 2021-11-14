@@ -6,16 +6,16 @@ from django.utils.translation import gettext_lazy as _
 class CourseForm(forms.ModelForm):
     class Meta:
         model = Course
-        fields = ['image', 'title', 'comment', 'place', 'user']
+        fields = ['image', 'title', 'comment', 'user']
         labels = {
             'image': _('사진'),
             'title': _('제목'),
             'comment': _('코멘트'),
-            'place': _('장소'),
+            # 'place': _('장소'),
         }
         widgets = {
             'user': forms.HiddenInput(),
-            'place': forms.HiddenInput(),
+            # 'place': forms.HiddenInput(),
         }
         help_texts = {
             'title': _('제목을 작성해주세요.'),
