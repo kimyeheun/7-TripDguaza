@@ -1,0 +1,28 @@
+{% block content %}
+    <h1>{{place.title}}</h1>
+    <div>
+        {{place.region}}
+        {{place.category}}
+        {% if place.place_type == 0 %}
+        식당
+        {% else %}
+        관광지
+        {% endif %}
+        <br>
+        {% if place.region_money == 0 %}
+        지역화폐 사용가능
+        {% else %}
+        지역화폐 사용불가
+        {% endif %}
+        <br>
+        {{place.location}}
+        {{place.businessHours}}
+        <br>
+        <br>
+        <h3>매뉴</h3>
+        {% for m in place.menu.all %}
+        {{m.name}} : {{m.price}}
+        <br>
+        {% endfor %}
+    </div>
+{% endblock %}

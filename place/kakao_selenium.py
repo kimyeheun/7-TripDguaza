@@ -25,8 +25,8 @@ class kakaoCrawler():
         # access
         url = 'https://place.map.kakao.com/'
         self.driver.get(url + str(id))
-        kakaoPlaceID = id
-        name = self.driver.find_elements_by_class_name("tit_location")[1].text
+        kakao_place_id = id
+        title = self.driver.find_elements_by_class_name("tit_location")[1].text
 
         # category
         try:
@@ -43,13 +43,16 @@ class kakaoCrawler():
         # businessHours
         try:
             businessHours = self.driver.find_element_by_class_name(
-                "txt_operation").text + self.driver.find_element_by_class_name("time_operation").text
+                "txt_operation").text
         except:
             businessHours = ""
         # menu
         try:
             menu = []
-            self.driver.find_element_by_class_name("open_txt").click()
+            try:
+                self.driver.find_element_by_class_name("open_txt").click()
+            except:
+                pass
             menuName = self.driver.find_elements_by_class_name("loss_word")
             menuName = [i.text for i in menuName]
             priceData = self.driver.find_elements_by_class_name("price_menu")
@@ -60,8 +63,8 @@ class kakaoCrawler():
             menu = []
 
         res = {
-            'kakaoPlaceID': kakaoPlaceID,
-            'name': name,
+            'kakao_place_id': kakao_place_id,
+            'title': title,
             'category': category,
             'location': location,
             'businessHours': businessHours,
