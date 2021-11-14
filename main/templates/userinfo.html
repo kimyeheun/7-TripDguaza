@@ -1,3 +1,4 @@
+
 {% extends 'base.html' %}
 
 {% load static %}
@@ -5,15 +6,19 @@
 {% block head_title %}마이페이지{% endblock %}
 
 {% block main_area %}
+
 {#<body style="background-image: url('memo.png'); background-size : cover;">#}
+
     <container class="container" >
     <div class="position-relative" style=" top:100px;"> <!--마이페이지 사진-->
         <img src="cat.jfif" class="rounded mx-auto d-block" alt="..." style="width:200px; height:200px;">
     </div>
 
+
     <div class="position-relative" style="top: 150px; display: flex; justify-content: center;">
         <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel" style="width: 1178px; height: 320px; background: antiquewhite; border-radius: 20%;">
             <div class="carousel-inner">
+
 
               <div class="carousel-item active"> <!--첫번째 슬라이드-->
                 <div style="width:135px; display: inline-table;"></div>
@@ -91,7 +96,6 @@
             </button>
           </div>
     </div>
-
 
     <div class="position-relative" style="top: 150px; display: flex; justify-content: center; margin: 30px 0 300px 0;">
     <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel" style="width: 1178px; height: 320px; background:darksalmon; border-radius: 20%;">
