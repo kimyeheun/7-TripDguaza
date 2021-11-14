@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>코스보여주기</title>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Droid+Sans:400,700" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.8.1/baguetteBox.min.css">
+    <style>
+        body {
+            background-color: #fff;
+            min-height: 100vh;
+            font: normal 16px sans-serif;
+
+        }
+
+        .gallery-container h1 {
+            text-align: center;
+            margin-top: 70px;
+            font-family: 'Droid Sans', sans-serif;
+            font-weight: bold;
+            color: #58595a;
+        }
+
+        .gallery-container p.page-description {
+            text-align: center;
+            margin: 30px auto;
+            font-size: 18px;
+            color: #85878c;
+        }
+
+        /* Styles for the gallery */
+
+        .tz-gallery {
+            margin: 50px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .tz-gallery .thumbnail {
+            padding: 0;
+            margin-bottom: 30px;
+            border: none;
+        }
+
+        .tz-gallery img {
+            border-radius: 2px;
+        }
+
+        .tz-gallery .caption {
+            padding: 26px 30px;
+            text-align: center;
+        }
+
+        .tz-gallery .caption h3 {
+            font-size: 14px;
+            font-weight: bold;
+            margin-top: 0;
+        }
+
+        .tz-gallery .caption p {
+            font-size: 12px;
+            color: #7b7d7d;
+            margin: 0;
+        }
+
+        .baguetteBox-button {
+            background-color: transparent !important;
+        }
+        .addbutton {text-decoration:none;font-family:Arial;background:#2ef1ff;background:-o-linear-gradient(90deg, #2ef1ff, #0eae8b);background:-moz-linear-gradient( center top, #2ef1ff 5%, #0eae8b 100% );background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #2ef1ff), color-stop(1, #0eae8b) );filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#2ef1ff', endColorstr='#0eae8b');background:-webkit-linear-gradient(#2ef1ff, #0eae8b);background:-ms-linear-gradient(#2ef1ff, #0eae8b);background:linear-gradient(#2ef1ff, #0eae8b);text-indent:0px;line-height:30px;-moz-border-radius:25px;-webkit-border-radius:25px;border-radius:25px;text-align:center;vertical-align:middle;display:inline-block;font-size:20px;color:#000000;width:150px;height:50px;padding:13px;border-color:#e3dae3;border-width:2px;border-style:solid;}.addbutton:active {position:relative;top:3px}.addbutton:hover {background:#0eae8b;background:-o-linear-gradient(90deg, #0eae8b, #2ef1ff);background:-moz-linear-gradient( center top, #0eae8b 5%, #2ef1ff 100% );background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #0eae8b), color-stop(1, #2ef1ff) );filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#0eae8b', endColorstr='#2ef1ff');background:-webkit-linear-gradient(#0eae8b, #2ef1ff);background:-ms-linear-gradient(#0eae8b, #2ef1ff);background:linear-gradient(#0eae8b, #2ef1ff);}</style>
+
+    </style>
+
+</head>
+
+<body>
+
+    <div class="container gallery-container">
+        <br><br><br><br>
+        <div style="color: #0EAE8c; font-size: 50px; text-align: center; ">코스게시판</h1>
+        <br>
+        <div style="text-align: center;">
+        <a href='#' class='addbutton'>코스만들기</a>
+        </div>  
+        <div class="tz-gallery">
+            <div class="row" style="padding-left: 7%">
+                <div class="col-md-4" style="border-style : solid; border-width: 1px;margin: 5px; width: 300px;">
+                    <div class="thumbnail">
+                        <a class="lightbox" href="../images/coast.jpg">
+                            <img src="anmok.jpg" alt="Coast">
+                        </a>
+                        <div class="caption">
+                            <h3>코스 1</h3>
+                            <p>설명</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4" style="border-style : solid; border-width: 1px; margin: 5px; width: 300px">
+                    <div class="thumbnail">
+                        <a class="lightbox" href="../images/rails.jpg">
+                            <img src="anmok.jpg" alt="Rails">
+                        </a>
+                        <div class="caption">
+                            <h3>코스 1</h3>
+                            <p>설명</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4" style="border-style : solid; border-width: 1px;margin: 5px; width: 300px">
+                    <div class="thumbnail">
+                        <a class="lightbox" href="anmok.jpg">
+                            <img src="anmok.jpg" alt="Traffic">
+                        </a>
+                        <div class="caption">
+                            <h3>코스 1</h3>
+                            <p>설명</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4" style="border-style : solid; border-width: 1px;margin: 5px; width: 300px;">
+                    <div class="thumbnail">
+                        <a class="lightbox" href="../images/coast.jpg">
+                            <img src="anmok.jpg" alt="Coast">
+                        </a>
+                        <div class="caption">
+                            <h3>코스 1</h3>
+                            <p>설명</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4" style="border-style : solid; border-width: 1px; margin: 5px; width: 300px">
+                    <div class="thumbnail">
+                        <a class="lightbox" href="../images/rails.jpg">
+                            <img src="anmok.jpg" alt="Rails">
+                        </a>
+                        <div class="caption">
+                            <h3>코스 1</h3>
+                            <p>설명</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4" style="border-style : solid; border-width: 1px;margin: 5px; width: 300px">
+                    <div class="thumbnail">
+                        <a class="lightbox" href="anmok.jpg">
+                            <img src="anmok.jpg" alt="Traffic">
+                        </a>
+                        <div class="caption">
+                            <h3>코스 1</h3>
+                            <p>설명</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4" style="border-style : solid; border-width: 1px;margin: 5px; width: 300px;">
+                    <div class="thumbnail">
+                        <a class="lightbox" href="../images/coast.jpg">
+                            <img src="anmok.jpg" alt="Coast">
+                        </a>
+                        <div class="caption">
+                            <h3>코스 1</h3>
+                            <p>설명</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4" style="border-style : solid; border-width: 1px; margin: 5px; width: 300px">
+                    <div class="thumbnail">
+                        <a class="lightbox" href="../images/rails.jpg">
+                            <img src="anmok.jpg" alt="Rails">
+                        </a>
+                        <div class="caption">
+                            <h3>코스 1</h3>
+                            <p>설명</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4" style="border-style : solid; border-width: 1px;margin: 5px; width: 300px">
+                    <div class="thumbnail">
+                        <a class="lightbox" href="anmok.jpg">
+                            <img src="anmok.jpg" alt="Traffic">
+                        </a>
+                        <div class="caption">
+                            <h3>코스 1</h3>
+                            <p>설명</p>
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+
+        </div>
+
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.8.1/baguetteBox.min.js"></script>
+    <script>
+        baguetteBox.run('.tz-gallery');
+    </script>
+</body>
+
+</html>
