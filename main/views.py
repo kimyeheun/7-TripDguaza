@@ -6,6 +6,10 @@ from .models import User
 from django.contrib.auth import login, authenticate, logout
 
 
+def main(request):
+    return render(request, "main.html")
+
+
 def signup(request):
     """
     회원가입
@@ -34,7 +38,8 @@ def signin(request):
     if request.method == 'POST':
         form = SignInForm(request.POST)
         if form.is_valid():
-            user = authenticate(email=form.data['email'], password=form.data['password'])
+            user = authenticate(
+                email=form.data['email'], password=form.data['password'])
             login(request, user)
             return HttpResponseRedirect('../userinfo')
     else:
@@ -73,7 +78,8 @@ def userinfo_update(request):
     회원 정보 수정 폼 양식이 유효하다면, 변경사항을 저장하고 변경된 회원정보를 다시 보여줌
     """
     if request.method == 'POST':
-        form = UpdateUserInfoForm(request.POST, request.FILES, instance=request.user)
+        form = UpdateUserInfoForm(
+            request.POST, request.FILES, instance=request.user)
         if form.is_valid():
             form.save()
         else:
