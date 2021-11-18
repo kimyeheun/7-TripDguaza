@@ -15,13 +15,13 @@ class SignUpForm(UserCreationForm):
         label="비밀번호",
         strip=False,
         widget=forms.PasswordInput(render_value=True),
-        help_text="<br>8~25글자 사이의 비밀번호를 입력해주세요",
+        help_text="8~25글자 사이의 비밀번호를 입력해주세요",
     )
     password2 = forms.CharField(
         label="비밀번호 확인",
         strip=False,
         widget=forms.PasswordInput(render_value=True),
-        help_text='<br>비밀번호를 재입력해주세요',
+        help_text='비밀번호를 재입력해주세요',
     )
 
     class Meta:
@@ -32,9 +32,10 @@ class SignUpForm(UserCreationForm):
             'nickname': _('닉네임'),
         }
         help_texts = {
-            'email': _('<br>사용하실 이메일을 입력해주세요'),
-            'nickname': _('<br>10자 이내의 닉네임을 입력해주세요'),
+            'email': _('사용하실 이메일을 입력해주세요'),
+            'nickname': _('10자 이내의 닉네임을 입력해주세요'),
         }
+
 
 class SignInForm(forms.Form):
     error_messages = {
@@ -56,9 +57,11 @@ class SignInForm(forms.Form):
 
     def __init__(self, *args, **kwargs):
         super(SignInForm, self).__init__(*args, **kwargs)
-        self.fields['email'].widget = forms.EmailInput(attrs={'placeholder': '이메일'})
+        self.fields['email'].widget = forms.EmailInput(
+            attrs={'placeholder': '이메일'})
         self.fields['email'].widget.attrs['class'] = 'form-control'
-        self.fields['password'].widget = forms.PasswordInput(attrs={'placeholder': '비밀번호'})
+        self.fields['password'].widget = forms.PasswordInput(
+            attrs={'placeholder': '비밀번호'})
         self.fields['password'].widget.attrs['class'] = 'form-control'
 
     def clean(self):
@@ -110,5 +113,3 @@ class CheckPasswordForm(forms.Form):
         if password:
             if not check_password(password, confirm_password):
                 self.add_error('password', '비밀번호가 일치하지 않습니다.')
-
-

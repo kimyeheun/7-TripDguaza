@@ -35,10 +35,8 @@ class User(AbstractUser):
     last_name = None
     email = models.EmailField(max_length=255, unique=True)
     nickname = models.CharField(max_length=10, blank=False, null=True)
-    image = models.ImageField(blank=True, null=True)
+    image = models.ImageField(blank=True, null=True, upload_to="user/")
     content = models.TextField(blank=True, null=True)
-    # place
-    # course_like = models.ManyToManyField("place.Place", related_name='course_likes',blank=True)
 
     is_staff = models.BooleanField(
         _('staff status'),

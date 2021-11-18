@@ -1,40 +1,31 @@
 from django import forms
-from .models import Course
+from .models import CourseItem, Course
 from django.utils.translation import gettext_lazy as _
 
 
 class CourseForm(forms.ModelForm):
     class Meta:
         model = Course
-        fields = ['image', 'title', 'comment']
+        fields = ['title', 'thumbnail_image', 'user', ]
         labels = {
-            'image': _('사진'),
             'title': _('제목'),
-            'comment': _('코멘트'),
-            # 'place': _('장소'),
+            'thumbnail_image': _('썸네일 이미지'),
         }
         widgets = {
-            # 'user': forms.HiddenInput(),
-            # 'place': forms.HiddenInput(),
-        }
-        help_texts = {
-            'title': _('제목을 작성해주세요.'),
-            'comment': _('코멘트를 작성해주세요.'),
+            'user': forms.HiddenInput(),
         }
 
 
-class CourseUpdateForm(CourseForm):
+class CourseItemForm(forms.ModelForm):
     class Meta:
-        model = Course
-        exclude = ['user']
-
-    def __init__(self, *args, **kwargs):
-        self.request = kwargs.pop('request', None)
-        super(CourseForm, self).__init__(*args, **kwargs)
-
-    def save(self, commit=True):
-        instance = super(CourseForm, self).save(commit=False)
-
-        if commit:
-            instance.save()
-        return instance
+        model = CourseItem
+        fields = ['course', 'image', 'comment']
+        labels = {
+            'course': _('코스'),
+            'image': _('이미지'),
+            'comment': _('코멘트'),
+        }
+        widgets = {
+            # 'course': forms.HiddenInput(),
+            'user': forms.HiddenInput(),
+        }
