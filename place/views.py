@@ -6,12 +6,13 @@ from .kakao_selenium import kakaoCrawler
 import csv
 
 
-def main(request):
-    return render(request, "main.html")
-
-
 def test(request):
     return render(request, "test.html")
+
+
+def region_detail(request, region_name):
+    place_list = Place.objects.filter(region=region_name)
+    return render(request, 'region_detail.html', {'region_name': region_name, 'place_list': place_list})
 
 
 def get_place_detail(request, kakao_place_id):

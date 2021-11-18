@@ -1,0 +1,9 @@
+{%load static %}
+<div style="display: flex; justify-content: center;">
+<a href="{% url 'signin' %}"><img  src="{% static 'logo.png' %}" style="width:200px; height: 200px;"></a>
+</div>
+<div class="row">
+  <div class="col-md-10"><a href="{% url 'signin' %}">TripDgauza</a></div>
+  <div class="col-6 col-md-1"><a href="{% url 'signin' %}" style="margin-top:-100px; color:#E3DFDB; text-decoration-line: none;">로그인</a></div>
+  <div class="col-6 col-md-1"><a href="{% url 'signup' %}" style="color:#E3DFDB; text-decoration-line: none;">회원가입</a></div>
+</div>
