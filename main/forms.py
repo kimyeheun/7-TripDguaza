@@ -3,6 +3,7 @@ from django.contrib.auth.forms import (
     UserCreationForm,
     UserChangeForm,
 )
+from django.forms import widgets
 from .models import User
 from django.utils.translation import gettext_lazy as _
 from django.contrib.auth.hashers import check_password
@@ -56,9 +57,11 @@ class SignInForm(forms.Form):
 
     def __init__(self, *args, **kwargs):
         super(SignInForm, self).__init__(*args, **kwargs)
-        self.fields['email'].widget = forms.EmailInput(attrs={'placeholder': '이메일'})
+        self.fields['email'].widget = forms.EmailInput(
+            attrs={'placeholder': '이메일'})
         self.fields['email'].widget.attrs['class'] = 'form-control'
-        self.fields['password'].widget = forms.PasswordInput(attrs={'placeholder': '비밀번호'})
+        self.fields['password'].widget = forms.PasswordInput(
+            attrs={'placeholder': '비밀번호'})
         self.fields['password'].widget.attrs['class'] = 'form-control'
 
     def clean(self):
@@ -110,5 +113,3 @@ class CheckPasswordForm(forms.Form):
         if password:
             if not check_password(password, confirm_password):
                 self.add_error('password', '비밀번호가 일치하지 않습니다.')
-
-

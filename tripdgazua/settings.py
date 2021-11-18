@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'main',
     'place',
     'course',
+    'bootstrap4',
 ]
 
 MIDDLEWARE = [
@@ -122,11 +123,14 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
 
 STATIC_URL = '/static/'
-STATICFILES_DIRS = (
-    os.path.join('static'),
-)
-# 앱 별로 static 을 사용한 경우
 # STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'static'),
+    os.path.join(BASE_DIR, 'main', 'static'),
+    os.path.join(BASE_DIR, 'place', 'static'),
+    os.path.join(BASE_DIR, 'course', 'static'),
+]
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field

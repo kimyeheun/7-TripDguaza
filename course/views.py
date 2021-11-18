@@ -4,6 +4,7 @@ from .forms import CourseForm, CourseItemForm
 from .models import Course, CourseItem
 from main.models import User
 
+
 def course_create(request):
     """
     코스 생성
@@ -101,6 +102,3 @@ def course_delete(request, id):
 #         form = CourseForm(instance=item)
 #         return render(request, 'course_update.html', {'form': form})
 #     return HttpResponseRedirect("../course_list")
-
-
-
