@@ -30,6 +30,7 @@ class Place(models.Model):
     place_type = models.IntegerField(choices=PLACE_CHOICES, null=True)
     region_money = models.IntegerField(
         choices=REGION_MONEY_AVALIABLE, null=True)
+    image = models.ImageField(blank=True, null=True)
 
     def __str__(self):
         return self.region + " " + self.title

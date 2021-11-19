@@ -4,6 +4,7 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.ui import WebDriverWait as wait
 import os.path
+import platform
 
 chrome_ver = chromedriver_autoinstaller.get_chrome_version().split('.')[0]
 
@@ -15,8 +16,12 @@ class kakaoCrawler():
         option = webdriver.ChromeOptions()
         option.add_argument("headless")
         option.add_experimental_option('excludeSwitches', ['enable-logging'])
-        self.driver = webdriver.Chrome(
-            os.getcwd() + f'\{chrome_ver}\chromedriver.exe', options=option)
+        if platform.system() == 'Windows' :
+            self.driver = webdriver.Chrome(
+                os.getcwd() + f'\{chrome_ver}\chromedriver.exe', options=option)
+        else :
+            self.driver = webdriver.Chrome(
+                os.getcwd() + f'/{chrome_ver}/chromedriver', options=option)
         self.driver.implicitly_wait(5)
 
     # Get place info
@@ -38,6 +43,8 @@ class kakaoCrawler():
         try:
             location = self.driver.find_element_by_class_name(
                 "txt_address").text
+            if "(우)" in location :
+                location = location.split('(우)')[0]
         except:
             location = ""
         # businessHours
