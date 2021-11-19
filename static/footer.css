@@ -1,3 +1,8 @@
+*{
+  font-family: 'Gamja Flower', cursive;
+font-family: 'Hi Melody', cursive;
+}
+
 footer {
   margin-top: 5%;
   bottom: 0;
@@ -7,6 +12,7 @@ footer {
   font-family: "Open Sans";
   padding-top: 20px;
   color: #e3dfdb;
+
 }
 
 .footer {
@@ -55,7 +61,6 @@ footer {
 
 .footer-bottom {
   background: #2e4071;
-  width: 100vw;
   padding: 20px 0;
   text-align: center;
 }

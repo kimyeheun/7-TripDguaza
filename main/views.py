@@ -53,7 +53,7 @@ def signout(request):
     로그아웃 한 뒤 메인페이지로 이동함
     """
     logout(request)
-    return HttpResponseRedirect('')
+    return HttpResponseRedirect('../')
 
 
 def userinfo(request):

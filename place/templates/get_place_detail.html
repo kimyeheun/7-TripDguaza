@@ -1,4 +1,4 @@
-{% block content %}
+<!-- {% block content %}
     <h1>{{place.title}}</h1>
     <div>
         {{place.region}}
@@ -25,4 +25,69 @@
         <br>
         {% endfor %}
     </div>
+{% endblock %} -->
+{% load static %}
+{% block main_area %}
+<link rel="stylesheet" href="{% static 'get_place_detail.css' %}">
+
+<body style="width: 100%; margin: 0">
+    <br><br><br>
+    <div id="container" style="padding-left: 25%; text-align: center; padding-right: 25%; font-size: 15px">
+        <p>
+            <a style="color: #2E4071;font-size: 25px;">{{place.title}}</a>
+            <br>
+            {% if place.region_money == 0 %}
+            지역화폐 사용가능
+            <img src="{% static '../static/card.png' %}" style="text-align: center; width: 30px; height: 30px;">
+            {% else %}
+            <img src="{% static '../static/card.png' %}"
+                style="text-align: center; width: 30px; height: 30px; margin-top: 10px; margin-bottom: -30px">
+            <!-- 지역화폐 사용불가 -->
+
+            {% endif %}
+        </p>
+        <br>
+        <br>
+        <div style="width: 100%;">
+            <img src="/anmok.jpg" style="text-align: center; height: 200px;">
+        </div>
+        <br>
+        <div>
+            <li>
+                지역 :
+                {{place.region}}
+            </li>
+            <br>
+
+            <li>
+                카테고리 :
+                {{place.category}}
+            </li>
+            <br>
+            <li>
+                목적 :
+                {% if place.place_type == 0 %}
+                식당
+                {% else %}
+                관광지
+                {% endif %}
+            </li>
+            <br>
+            <li>
+                지역 :
+                {{place.location}}
+            </li>
+            <br>
+            <li>
+                운영시간 :
+                {{place.businessHours}}
+            </li>
+            <br>
+            <h3>메뉴</h3>
+            {% for m in place.menu.all %}
+            <br>
+            {{m.name}} : {{m.price}}
+            {% endfor %}
+        </div>
+</body>
 {% endblock %}
