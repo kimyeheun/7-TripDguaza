@@ -1,8 +1,8 @@
+from django.contrib.auth.decorators import login_required
 from django.http import HttpResponseRedirect, HttpResponse
 from django.shortcuts import render, get_object_or_404, redirect
-from .forms import CourseForm, CourseItemForm
-from .models import Course, CourseItem
-from main.models import User
+from .forms import CourseForm, CourseItemForm, ReviewForm, ReviewUpdateForm
+from .models import Course, CourseItem, Review
 
 
 def course_create(request):
@@ -65,8 +65,12 @@ def course_detail(request, id):
     코스 자세히보기
     pk 값을 기준으로 페이지를 보여줌
     """
+    my_course = get_object_or_404(Course, pk=id)
     courseitems = CourseItem.objects.filter(course=id)
+    review_form = ReviewForm()
     context = {
+        'my_course': my_course,
+        'review_form': review_form,
         'courseitems': courseitems,
     }
     return render(request, 'course_detail.html', context)
@@ -102,3 +106,27 @@ def course_delete(request, id):
 #         form = CourseForm(instance=item)
 #         return render(request, 'course_update.html', {'form': form})
 #     return HttpResponseRedirect("../course_list")
+
+
+def review_create(request, id):
+    if request.method == 'POST':
+        form = ReviewForm(request.POST)
+        request.POST._mutable = True
+        request.POST['user'] = request.user
+        print("Fail")
+        if form.is_valid():
+            temp_form = form.save(commit=False)
+            temp_form.course = Course.objects.get(id=id)
+            temp_form.save()
+    return redirect('course_detail', id)
+
+
+def review_delete(request, id):
+    """
+    리뷰 삭제
+    해당하는 id의 Review item 삭제
+    """
+    item = get_object_or_404(Review, pk=id)
+    if request.method == 'POST':
+        item.delete()
+        return redirect('course_list')

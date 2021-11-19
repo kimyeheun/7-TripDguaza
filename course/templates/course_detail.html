@@ -113,3 +113,24 @@
 {% endfor %}
 </form>
 
+<h2>리뷰 작성하기</h2>
+<form method="POST" action="{% url 'review_create' my_course.id %}">
+    {% csrf_token %}
+    {{ review_form }}
+    <input type="submit" value="리뷰 작성">
+</form>
+    {% for review in my_course.reviews.all %}
+        <h2>{{ review.user.nickname }}</h2>
+        <div>내용 : {{ review.content }}</div>
+        <div>평점 : {{ review.rating }}</div>
+        <form action="{% url 'review_delete' review.id %}" method="POST" accept="image/*">
+            {% csrf_token %}
+            <button>리뷰 삭제하기</button>
+        </form>
+    {% endfor %}
+    
+
+
+
+
+
