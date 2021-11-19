@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block head_title %}회원가입 페이지{% endblock %}
+{% block main_area %}
+
+
+<link rel="stylesheet" href="{% static 'signup.css' %}">
+<link rel="stylesheet" href="{% static 'signin.css' %}">
+
+
+<!-- 회원가입 -->
+<div id="register_box">
+    <div id="register_txt">
+        <div id="container">
+            <div class="registertext_box">
+                <div class="col-12 text-center 1">
+                    <h1 style="color: #2E4071;">회원가입</h1>
+                </div>
+            </div>
+        </div>
+        <br>
+        <form method="POST">
+            {% csrf_token %}
+        <!-- 이메일 -->
+        <div class="form-group">
+            <input type="email" class="form-control" id="email" placeholder="이메일" name="email">
+        </div>
+        <br>
+        <!-- 비밀번호 -->
+        <div class="form-group">
+            <input type="password" class="form-control" id="password1" placeholder="비밀번호" name="password1">
+        </div>
+        <br>
+        <!-- 비밀번호 확인 -->
+        <div class="form-group">
+            <input type="password" class="form-control" id="password2" placeholder="비밀번호 확인" name="password2">
+        </div>
+        <br>
+        <!-- 별명 -->
+        <div class="form-group">
+            <input type="text" class="form-control" id="nickname" placeholder="닉네임" name="nickname">
+        </div>
+        <input type="submit" value="회원가입" class="button1" style="height: 50px;  position: absolute;    left: 50%;     transform: translateX(-50%);  ">
+        </form>
+    </div>
+</div>
+</div>
+{% endblock %}

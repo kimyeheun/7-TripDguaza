@@ -1,0 +1,18 @@
+{%load static %}
+<div style="display: flex; justify-content: center; height: 200px;">
+  <a href="{% url 'main' %}"><img src="{% static 'logo.png' %}" style="width:200px; height: 200px;"></a>
+  <br>
+</div>
+<div class="headersign">
+  {% if not user.is_authenticated %}
+  <a class="signbtn" href="{% url 'signin' %}">로그인</a>
+  <a class="signbtn" href="{% url 'signup' %}">회원가입</a>
+  {% endif %}
+
+  {% if user.is_authenticated %}
+  <a class="signbtn" href="{% url 'course_create' %}">코스만들기</a>
+  <a class="signbtn" href="{% url 'userinfo' %}">마이페이지</a>
+  <a class="signbtn" href="{% url 'signout' %}">로그아웃</a>
+  {% endif %}
+
+</div>

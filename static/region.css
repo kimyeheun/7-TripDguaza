@@ -1,0 +1,33 @@
+.container {
+  width: 100%;
+}
+.Contents {
+  padding: 3% 5%;
+  max-width: 1920px;
+  margin: 0% auto;
+}
+.Contents .row {
+  display: inline-flex;
+  align-items: center;
+  background: none;
+  position: static;
+  width: 100%;
+  min-height: 720px;
+}
+.mainMap {
+  position: relative;
+  justify-content: center;
+  margin: 0 auto;
+}
+.list-group {
+  height: 700px;
+  overflow-y: scroll;
+}
+.list-group a {
+  font-size: 12px;
+  font-weight: bold;
+  text-decoration: none;
+  position: relative;
+  width: auto;
+  padding: 6px 12px;
+}

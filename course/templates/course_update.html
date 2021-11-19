@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block main_area %}
+
+<link rel="stylesheet" href="{% static 'signup.css' %}">
+<link rel="stylesheet" href="{% static 'signin.css' %}">
+
+
+
+
+
+<div id="register_box" style="height: 353px;">
+    <div id="register_txt">
+        <div id="container">
+            <div class="logintext_box">
+                <div class="col-12 text-center">
+                    <h1 style="color: #2E4071;">정보 수정하기</h1>
+                    <form action="" method="POST" enctype="multipart/form-data">
+
+                        {% csrf_token %}
+
+                        <div class="form-group">
+                            <input type="text" class="form-control" id="nickname" placeholder="닉네임" name="nickname">
+                        </div>
+                        <div class="form-group">
+                            <input type="text" class="form-control" id="content" placeholder="소개글" name="content">
+                        </div>
+                        <div style="width: 300px; height: 200px; margin: 0px auto;">
+                        {% for field in form %}
+                        {% if field.label == '프로필 이미지' %}
+                        <div class="user-img">
+                            <img id="image{{field.id}}" src="{{ field.image.url }}" type="file">
+                            {{ field }}
+                        </div>
+                        {%endif%}
+                        {%endfor%}
+                    </div>
+                        <button>완료</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+{% endblock %}

@@ -1,0 +1,71 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block main_area %}
+
+
+
+
+<div id="register_box" style="height: 353px;">
+    <div id="register_txt">
+        <div class="col-12 text-center">
+            <h1 style="color: #2E4071;"> 코스 추가하기</h1>
+            <div style="width: 100%; display: flex; justify-content: center;">
+                <div class="container"
+                    style="height: 300px; margin-top: 5%;width: 2000px; margin-left : 0 ;margin-right: 0">
+                    <div class="row">
+                        <div class="col-2">
+                            <div class="card">
+                                <div class="card-header" style="height: 200px;">
+                                    <img width="150px" src="{% static 'logo.png' %}"
+                                        style="display: block; margin: 0px auto;">
+                                </div>
+                                <div class="card-body" style="background-color: #2E4071; height: 100px;">
+                                    <h5 class="card-title">코스 1</h5>
+                                    <p class="card-text">코스1 입니다.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+<br>        <br>        <br>        <br>
+<div style="height: 300px; margin-top: 5%;width: 100%; margin-left : 0 ;margin-right: 0; display: flex; justify-content: center;">
+    <form action="" method="POST" enctype="multipart/form-data" style="display: flex; justify-content: center;width: 100%;">
+        <br>
+        {% csrf_token %}
+        <div style="height: 500px; ">
+            <div class="form-group" style="width: 700px;">
+                <input type="text" class="form-control" id="title" placeholder="소개글" name="title">
+            </div>
+            <div class="form-group">
+                <input type="text" style="height: 300px;" class="form-control" id="content" placeholder="컨텐츠"
+                    name="content">
+            </div>
+
+            <div style=" clear:both; width: 300px; height: 100px; margin: 0px auto; padding-bottom: 0;">
+                {% for field in form %}
+                {% if field.label == '썸네일 이미지' %}
+                <div class="user-img">
+                    <img id="image{{field.id}}" src="{{ field.image.url }}" type="file">
+                    {{ field }}
+                </div>
+                {%endif%}
+                {%endfor%}
+            </div>
+
+            <div style="display: flex; justify-content: center;  clear:both; ">
+                <button>
+                    <a class="btn btn btn-secondary" style="background-color: #2E4071;">추가하기</a>
+                </button>
+            </div>
+        </div>
+    </form>
+</div>
+</div>
+</div>
+</div>
+
+{% endblock %}

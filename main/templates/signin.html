@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block head_title %}로그인 페이지{% endblock %}
+{% block main_area %}
+
+<link rel="stylesheet" href="{% static 'signup.css' %}">
+<link rel="stylesheet" href="{% static 'signin.css' %}">
+<!-- 로그인 -->
+<div id="register_box" style="height: 353px;">
+    <div id="register_txt">
+        <div id="container">
+            <div class="logintext_box">
+                <div class="col-12 text-center">
+                    <h1 style="color: #2E4071;">로그인</h1>
+                </div>
+            </div>
+        </div>
+        <br>
+            <form method="POST">
+                {% csrf_token %}
+                <!-- 이메일 -->
+                <div class="form-group">
+                    <input type="email" class="form-control" id="email" placeholder="이메일" name="email">
+                </div>
+                <br>
+                <!-- 비밀번호 -->
+                <div class="form-group">
+                    <input type="password" class="form-control" id="password" placeholder="비밀번호" name="password">
+                </div>
+                <input type="submit" value="로그인" class="button1" style="height: 50px;  position: absolute;    left: 50%;     transform: translateX(-50%);  ">
+            </form>
+            <br>
+    </div>
+</div>
+
+{% endblock %}

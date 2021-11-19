@@ -1,0 +1,178 @@
+{% include 'header.html' %}
+
+{% load static %}
+
+{% block head_title %}마이페이지{% endblock %}
+
+{% block main_area %}
+<body style="background-image: url('memo.png'); background-size : cover;">
+    <container class="container" >
+      <a class='button' href="{% url 'signout' %}">로그아웃</a>
+    <div class="position-relative" style=" top:100px;"> <!--마이페이지 사진-->
+        <img src="cat.jfif" class="rounded mx-auto d-block" alt="..." style="width:200px; height:200px;">
+    </div>
+    
+    <div class="position-relative" style="top: 150px; display: flex; justify-content: center;">
+        <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel" style="width: 1178px; height: 320px; background: antiquewhite; border-radius: 20%;">
+            <div class="carousel-inner">
+                
+              <div class="carousel-item active"> <!--첫번째 슬라이드-->
+                <div style="width:135px; display: inline-table;"></div>
+                <div class="card" style="width: 18rem; display: inline-table; margin-right: 10px; margin-top: 12px;">
+                    <img src="cat.jfif" class="card-img-top" alt="...">
+                    <div class="card-body">
+                      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                    </div>
+                </div>
+                <div class="card" style="width: 18rem; display: inline-table; margin-right: 10px; margin-top: 12px;">
+                    <img src="cat.jfif" class="card-img-top" alt="...">
+                    <div class="card-body">
+                      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                    </div>
+                </div>
+                <div class="card" style="width: 18rem; display: inline-table; margin-top: 12px;">
+                    <img src="cat.jfif" class="card-img-top" alt="...">
+                    <div class="card-body">
+                      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                    </div>
+                </div>
+              </div>
+    
+              <div class="carousel-item"> <!--두번째 슬라이드-->
+                <div style="width:135px; display: inline-table;"></div>
+                <div class="card" style="width: 18rem; display: inline-table; margin-right: 10px; margin-top: 12px;">
+                    <img src="cat.jfif" class="card-img-top" alt="...">
+                    <div class="card-body">
+                      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                    </div>
+                </div>
+                <div class="card" style="width: 18rem; display: inline-table; margin-right: 10px; margin-top: 12px;">
+                    <img src="cat.jfif" class="card-img-top" alt="...">
+                    <div class="card-body">
+                      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                    </div>
+                </div>
+                <div class="card" style="width: 18rem; display: inline-table; margin-top: 12px;">
+                    <img src="cat.jfif" class="card-img-top" alt="...">
+                    <div class="card-body">
+                      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                    </div>
+                </div>
+              </div>
+    
+              <div class="carousel-item"> <!--세번째 슬라이드-->
+                <div style="width:135px; display: inline-table;"></div>
+                <div class="card" style="width: 18rem; display: inline-table; margin-right: 10px; margin-top: 12px;">
+                    <img src="cat.jfif" class="card-img-top" alt="...">
+                    <div class="card-body">
+                      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                    </div>
+                </div>
+                <div class="card" style="width: 18rem; display: inline-table; margin-right: 10px; margin-top: 12px;">
+                    <img src="cat.jfif" class="card-img-top" alt="...">
+                    <div class="card-body">
+                      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                    </div>
+                </div>
+                <div class="card" style="width: 18rem; display: inline-table; margin-top: 12px;">
+                    <img src="cat.jfif" class="card-img-top" alt="...">
+                    <div class="card-body">
+                      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                    </div>
+                </div>
+              </div>
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev" style="width:150px;">
+              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+              <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next" style="width:150px;">
+              <span class="carousel-control-next-icon" aria-hidden="true"></span>
+              <span class="visually-hidden">Next</span>
+            </button>
+          </div>
+    </div>
+    
+    
+    <div class="position-relative" style="top: 150px; display: flex; justify-content: center; margin: 30px 0 300px 0;">
+    <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel" style="width: 1178px; height: 320px; background:darksalmon; border-radius: 20%;">
+        <div class="carousel-inner">
+            <div class="carousel-item active"> <!--첫번째 슬라이드-->
+                <div style="width:135px; display: inline-table;"></div>
+                <div class="card" style="width: 18rem; display: inline-table; margin-right: 10px; margin-top: 12px;">
+                    <img src="cat.jfif" class="card-img-top" alt="...">
+                    <div class="card-body">
+                      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                    </div>
+                </div>
+                <div class="card" style="width: 18rem; display: inline-table; margin-right: 10px; margin-top: 12px;">
+                    <img src="cat.jfif" class="card-img-top" alt="...">
+                    <div class="card-body">
+                      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                    </div>
+                </div>
+                <div class="card" style="width: 18rem; display: inline-table; margin-top: 12px;">
+                    <img src="cat.jfif" class="card-img-top" alt="...">
+                    <div class="card-body">
+                      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                    </div>
+                </div>
+              </div>
+    
+          <div class="carousel-item"> <!--두번째 슬라이드-->
+                <div style="width:135px; display: inline-table;"></div>
+                <div class="card" style="width: 18rem; display: inline-table; margin-right: 10px; margin-top: 12px;">
+                    <img src="cat.jfif" class="card-img-top" alt="...">
+                    <div class="card-body">
+                      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                    </div>
+                </div>
+                <div class="card" style="width: 18rem; display: inline-table; margin-right: 10px; margin-top: 12px;">
+                    <img src="cat.jfif" class="card-img-top" alt="...">
+                    <div class="card-body">
+                      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                    </div>
+                </div>
+                <div class="card" style="width: 18rem; display: inline-table; margin-top: 12px;">
+                    <img src="cat.jfif" class="card-img-top" alt="...">
+                    <div class="card-body">
+                      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                    </div>
+                </div>
+              </div>
+    
+              <div class="carousel-item"> <!--세번째 슬라이드-->
+                <div style="width:135px; display: inline-table;"></div>
+                <div class="card" style="width: 18rem; display: inline-table; margin-right: 10px; margin-top: 12px;">
+                    <img src="cat.jfif" class="card-img-top" alt="...">
+                    <div class="card-body">
+                      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                    </div>
+                </div>
+                <div class="card" style="width: 18rem; display: inline-table; margin-right: 10px; margin-top: 12px;">
+                    <img src="cat.jfif" class="card-img-top" alt="...">
+                    <div class="card-body">
+                      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                    </div>
+                </div>
+                <div class="card" style="width: 18rem; display: inline-table; margin-top: 12px;">
+                    <img src="cat.jfif" class="card-img-top" alt="...">
+                    <div class="card-body">
+                      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                    </div>
+                </div>
+              </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Next</span>
+        </button>
+      </div>
+    </div>
+    </container>
+</body>
+{% endblock %}

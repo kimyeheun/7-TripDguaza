@@ -1,0 +1,201 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block main_area %}
+<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=36d28f49303019c33c6df68731ebcf13&libraries=services"></script>
+<link rel="stylesheet" href="{% static 'region.css' %}">
+<script type="text/javascript" src="{% static 'js/geo1.json' %}"></script>
+
+<div class="container">
+    <div class= "Contents">
+        <div class="row">
+            <div class="col-lg-7 col-md-7 col-sm-7">
+                <div class="mainMap" id="map" style="width:100%; height: 720px;"></div>
+            </div>
+            <div class="col-lg-1 col-md-1 col-sm-1"></div>
+            <div class="col-lg-4 col-md-4 col-sm-4">
+                <div style="height: 720px;">
+                    <nav>
+                        <div class="nav nav-tabs" id="nav-tab" role="tablist">
+                          <button class="nav-link active" id="nav-home-tab" data-bs-toggle="tab" data-bs-target="#nav-home" type="button" role="tab" aria-controls="nav-home" aria-selected="true">관광지</button>
+                          <button class="nav-link" id="nav-profile-tab" data-bs-toggle="tab" data-bs-target="#nav-profile" type="button" role="tab" aria-controls="nav-profile" aria-selected="false">맛집</button>
+                          <button class="nav-link" id="nav-contact-tab" data-bs-toggle="tab" data-bs-target="#nav-contact" type="button" role="tab" aria-controls="nav-contact" aria-selected="false">지역축제</button>
+                        </div>
+                    </nav>
+                    <div class="tab-content" id="nav-tabContent">
+                        <form action="{%url 'course_create'%}" method="post">
+                            {%csrf_token%}
+                            <div class="tab-pane show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
+                                <div class="list-group">
+                                    {% for place in place_list %}
+                                    <a href="#" onclick="searchMap('{{place.title}}', '{{place.location}}', '{{place.kakao_place_id}}');" id="{{place.kakao_place_id}}" class="list-group-item" aria-current="true">
+                                    <div class="d-flex w-100 justify-content-between">
+                                        <h5 class="mb-1">{{place.title}}</h5>
+                                        <small>{{place.category}}</small>
+                                    </div>
+                                    <p class="mb-1">{{place.location}}</p>
+                                    {% if place.region_money %}
+                                    <small>지역화폐 사용 가능 지점</small>
+                                    {% else %}
+                                    <small>지역화폐 사용 불가 지점</small>
+                                    {% endif %}
+                                    <!-- Modal -->
+                                    <div class="modal fade" id="Modal{{place.kakao_place_id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                        <div class="modal-dialog">
+                                            <div class="modal-content" style='width:100%; height: 720px;'>
+                                                <div class="modal-header">
+                                                <h5 class="modal-title" id="exampleModalLabel">{{place.title}}</h5>
+                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <iframe style='width:100%; height: 600px;' src="{% url 'get_place_detail' place.kakao_place_id %}">
+                                                        <p>eee</p>
+                                                    </iframe>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <input name="place[]" value="{{place.kakao_place_id}}" type="checkbox" class="btn-check" id="btn-check-outlined{{place.kakao_place_id}}" autocomplete="off">
+                                        <label style='float: right;' class="btn btn-outline-primary" for="btn-check-outlined{{place.kakao_place_id}}">선택</label><br>
+                                    </a>
+                                    {% endfor %}
+                                </div>
+                            </div>
+                            <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
+                                bbbb
+                            </div>
+                            <div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">
+                                ccccccccc
+                            </div>
+                            <button style='float: right;'type="submit">코스 생성하기</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+</div>
+
+<script>
+    var s = "{{region_name}}";
+    var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
+    mapOption = {
+        center: new kakao.maps.LatLng(37.566826, 126.9786567), // 지도의 중심좌표
+        level: 5 // 지도의 확대 레벨
+    };  
+
+    // 지도를 생성합니다    
+    var map = new kakao.maps.Map(mapContainer, mapOption);
+
+    $.getJSON("/../static/js/geo1.json", function(geojson) {
+        let data = geojson.features;
+        let coordinates = []; //좌표 저장 배열
+        let name = ''; //행정구 이름
+
+        $.each(data, function(index, val) {
+            coordinates = val.geometry.coordinates;
+            name = val.properties.CTP_KOR_NM;
+            if (name == s) displayArea(coordinates, name);
+            })
+    })
+    var polygons = [];
+
+    function displayArea(coordinates, name) {
+        $.each(coordinates, function(index, c) {
+            let path = [];
+            let points = [];
+            $.each(c, function(index, coordinate) {
+            let point = {};
+            point.x = coordinate[1];
+            point.y = coordinate[0];
+            points.push(point);
+            path.push(new kakao.maps.LatLng(coordinate[1], coordinate[0]));
+            })
+            let polygon = new kakao.maps.Polygon({
+            map: map,
+            path: path, // 그려질 다각형의 좌표 배열입니다
+            strokeWeight: 2, // 선의 두께입니다
+            strokeColor: '#004c80', // 선의 색깔입니다
+            strokeOpacity: 0.8, // 선의 불투명도 입니다 1에서 0 사이의 값이며 0에 가까울수록 투명합니다
+            strokeStyle: 'solid', // 선의 스타일입니다
+            fillColor: '#fff', // 채우기 색깔입니다
+            fillOpacity: 0.7, // 채우기 불투명도 입니다
+            });
+            polygons.push(polygon);
+        })
+    }
+
+    // 장소 검색 객체를 생성합니다
+    var ps = new kakao.maps.services.Places(); 
+
+    // 키워드로 장소를 검색합니다
+    ps.keywordSearch(s, placesSearchCB); 
+
+    // 키워드 검색 완료 시 호출되는 콜백함수 입니다
+    function placesSearchCB (data, status, pagination) {
+        if (status === kakao.maps.services.Status.OK) {
+            // 검색된 장소 위치를 기준으로 지도 범위를 재설정하기위해
+            // LatLngBounds 객체에 좌표를 추가합니다
+            var bounds = new kakao.maps.LatLngBounds();
+
+            for (var i=0; i<data.length; i++) {
+                // displayMarker(data[i]);    
+                bounds.extend(new kakao.maps.LatLng(data[i].y, data[i].x));
+            }       
+            // 검색된 장소 위치를 기준으로 지도 범위를 재설정합니다
+            map.setBounds(bounds);
+        } 
+    }
+    var markers = [];
+    var infowindows = [];
+    function searchMap(name, address, id) {
+        
+        for (var i=0; i<infowindows.length; i++) {
+            markers[i].setMap(null);
+            infowindows[i].close();  
+        }
+
+        // 장소 이름과 주소 받아오기
+        var name = name;
+        var address = address;
+        var id = id;
+
+        // 주소-좌표 변환 객체를 생성합니다
+        var geocoder = new kakao.maps.services.Geocoder();
+
+        // 주소로 좌표를 검색합니다
+        geocoder.addressSearch(address, function(result, status) {
+
+            // 정상적으로 검색이 완료됐으면 
+            if (status === kakao.maps.services.Status.OK) {
+
+                var coords = new kakao.maps.LatLng(result[0].y, result[0].x);
+                // 결과값으로 받은 위치를 마커로 표시합니다
+                var marker = new kakao.maps.Marker({
+                    map: map,
+                    position: coords
+                });
+                
+
+                // 인포윈도우로 장소에 대한 설명을 표시합니다
+                var infowindow = new kakao.maps.InfoWindow({
+                    content: `'<div style="width:150px;text-align:center;padding:6px 0;"><p>${name}</p><button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#Modal${id}">상세보기</button></div>'`
+                });
+                infowindow.open(map, marker);
+                markers.push(marker)
+                infowindows.push(infowindow)
+                // 지도의 중심을 결과값으로 받은 위치로 이동시킵니다
+                map.setCenter(coords);
+                
+            }
+            
+        });
+        // var event = document.getElementById(`${id}`)
+        // console.log(event)
+        // event.removeAttribute('onclick');
+        // // for (var i=0; i<event.length; i++) {
+        // //     console.log(event[i].getElementByTagName('a'))
+        // //     event[i].getElementByTagName('a').onclick = null;
+        // // }
+    }
+</script>
+{% endblock %}

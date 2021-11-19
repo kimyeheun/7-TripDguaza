@@ -1,0 +1,94 @@
+<!-- 
+    <style>
+        .detail_menu {
+            text-align: center;
+        }
+
+        .arrow-1 {
+            height: 15px;
+            width: 15px;
+            border: 1px solid #2E4071;
+            border-width: 2px 2px 0 0;
+            transform: rotate(45deg);
+            float: left;
+        }
+
+        .feeling_div {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .button-container {
+            margin-left: 20px;
+        }
+
+        .feeling_a {
+            background-color: #fff;
+            border: 2px solid #2E4071;
+            padding: 10px 20px;
+            border-radius: 2px;
+            color: #2E4071;
+        }
+    </style>
+</head>
+
+<body style="width: 100%; margin: 0">
+    <br><br><br>
+    <div id="container" style="padding-left: 25%; text-align: center; padding-right: 25%; font-size: 15px">
+        <p>
+            <a style="color: #0EAE8c;">강릉 안목해변</a>
+        </p>
+        <br>
+        <br>
+        <div style="width: 100%;">
+            <img src="/anmok.jpg" style="text-align: center; height: 350px;">
+        </div>
+        <br>
+    <div class="arrowed" style="font-size: 15px;">
+            <a>강원 강릉시 창해로14번길 20-1 </a>
+        <br>       <br>
+            <a>#해수욕장
+                #드라이브데이트코스</a>
+        <br>       <br>
+            <a>방역 관련 정보</a>
+
+    </div>       <br>
+
+
+</body>
+
+</html> -->
+
+<h2>코스 상세보기</h2>
+<form action="" method="GET" accept="image/*">
+{% csrf_token %}
+{% for item in courseitems %}
+    {% if item.image %}
+        <p> 상세 이미지 : <img src = "{{ item.image.url }}" alt="" height="600"></p>
+    {% endif %}
+    <p> 코멘트 : {{ item.comment }}</p>
+{% endfor %}
+</form>
+
+<h2>리뷰 작성하기</h2>
+<form method="POST" action="{% url 'review_create' my_course.id %}">
+    {% csrf_token %}
+    {{ review_form }}
+    <input type="submit" value="리뷰 작성">
+</form>
+    {% for review in my_course.reviews.all %}
+        <h2>{{ review.user.nickname }}</h2>
+        <div>내용 : {{ review.content }}</div>
+        <div>평점 : {{ review.rating }}</div>
+        <form action="{% url 'review_delete' review.id %}" method="POST" accept="image/*">
+            {% csrf_token %}
+            <button>리뷰 삭제하기</button>
+        </form>
+    {% endfor %}
+    
+
+
+
+
+
