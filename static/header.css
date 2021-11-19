@@ -22,6 +22,7 @@ div {
     align-items: center;
     height: 65px;
     width:100%;
+    background-color: none;
 }
 .row a{
     font-size: 24px;
