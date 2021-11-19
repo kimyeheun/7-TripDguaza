@@ -3,15 +3,57 @@
 {% block main_area %}
 <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=36d28f49303019c33c6df68731ebcf13&libraries=services"></script>
-<link rel="stylesheet" href="{% static 'main.css' %}">
+<link rel="stylesheet" href="{% static 'region.css' %}">
 
 <div class="container">
     <div class= "Contents">
-        <div class="mainMap" id="map" style="width:60%; height: 720px;"></div>
-        <!-- <script>
-            var s = "{{'place.region'}}".replace('place.region', place.region)
-            ps.keywordSearch(s, placesSearchCB);
-        </script> -->
+        <div class="row">
+            <div class="col-lg-7 col-md-7 col-sm-7">
+                <div class="mainMap" id="map" style="width:100%; height: 720px;"></div>
+            </div>
+            <div class="col-lg-1 col-md-1 col-sm-1"></div>
+            <div class="col-lg-4 col-md-4 col-sm-4">
+                <div class="well" style="height: 720px;">
+                    <nav>
+                        <div class="nav nav-tabs" id="nav-tab" role="tablist">
+                          <button class="nav-link active" id="nav-home-tab" data-bs-toggle="tab" data-bs-target="#nav-home" type="button" role="tab" aria-controls="nav-home" aria-selected="true">관광지</button>
+                          <button class="nav-link" id="nav-profile-tab" data-bs-toggle="tab" data-bs-target="#nav-profile" type="button" role="tab" aria-controls="nav-profile" aria-selected="false">맛집</button>
+                          <button class="nav-link" id="nav-contact-tab" data-bs-toggle="tab" data-bs-target="#nav-contact" type="button" role="tab" aria-controls="nav-contact" aria-selected="false">지역축제</button>
+                        </div>
+                    </nav>
+                    <div class="tab-content" id="nav-tabContent">
+                    <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
+                        <div class="list-group">
+                            {% for place in place_list %}
+                            <a href="#" onclick="searchMap('{{place.title}}', '{{place.location}}');" class="list-group-item list-group-item-action" aria-current="true">
+                              <div class="d-flex w-100 justify-content-between">
+                                <h5 class="mb-1">{{place.title}}</h5>
+                                <small>{{place.category}}</small>
+                              </div>
+                              <p class="mb-1">{{place.location}}</p>
+                              {% if place.region_money %}
+                              <small>지역화폐 사용 가능 지점</small>
+                              {% else %}
+                              <small>지역화폐 사용 불가 지점</small>
+                              {% endif %}
+                              <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+                                ...
+                                </div>
+                            </a>
+                            
+                            {% endfor %}
+                        </div>
+                    </div>
+                    <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
+                        bbbb
+                    </div>
+                    <div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">
+                        ccccccccc
+                    </div>
+                    </div>
+                </div>
+            </div>
+        </div>
 </div>
 
 <script>
@@ -72,7 +114,6 @@
     // 키워드 검색 완료 시 호출되는 콜백함수 입니다
     function placesSearchCB (data, status, pagination) {
         if (status === kakao.maps.services.Status.OK) {
-
             // 검색된 장소 위치를 기준으로 지도 범위를 재설정하기위해
             // LatLngBounds 객체에 좌표를 추가합니다
             var bounds = new kakao.maps.LatLngBounds();
@@ -81,10 +122,43 @@
                 // displayMarker(data[i]);    
                 bounds.extend(new kakao.maps.LatLng(data[i].y, data[i].x));
             }       
-
             // 검색된 장소 위치를 기준으로 지도 범위를 재설정합니다
             map.setBounds(bounds);
         } 
     }
+    function searchMap(name, address) {
+        // 장소 이름과 주소 받아오기
+        var name = name;
+        var address = address;
+
+        // 주소-좌표 변환 객체를 생성합니다
+        var geocoder = new kakao.maps.services.Geocoder();
+
+        // 주소로 좌표를 검색합니다
+        geocoder.addressSearch(address, function(result, status) {
+
+            // 정상적으로 검색이 완료됐으면 
+            if (status === kakao.maps.services.Status.OK) {
+
+                var coords = new kakao.maps.LatLng(result[0].y, result[0].x);
+
+                // 결과값으로 받은 위치를 마커로 표시합니다
+                var marker = new kakao.maps.Marker({
+                    map: map,
+                    position: coords
+                });
+
+                // 인포윈도우로 장소에 대한 설명을 표시합니다
+                var infowindow = new kakao.maps.InfoWindow({
+                    content: '<div style="width:150px;text-align:center;padding:6px 0;">'+name+'</div>'
+                });
+                infowindow.open(map, marker);
+
+                // 지도의 중심을 결과값으로 받은 위치로 이동시킵니다
+                map.setCenter(coords);
+
+            } 
+        }); 
+    } 
 </script>
 {% endblock %}
