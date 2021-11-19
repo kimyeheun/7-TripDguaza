@@ -81,7 +81,6 @@ class SignInForm(forms.Form):
 
 class UpdateUserInfoForm(UserChangeForm):
     password = None
-
     class Meta:
         model = User
         fields = ['nickname', 'image', 'content']
@@ -90,7 +89,6 @@ class UpdateUserInfoForm(UserChangeForm):
             'image': _('프로필 이미지'),
             'content': _('소개글'),
         }
-
 
 class CheckPasswordForm(forms.Form):
     password = forms.CharField(
