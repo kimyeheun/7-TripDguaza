@@ -48,10 +48,10 @@
             <div style="width:135px; display: inline-table;"></div>
             <div class="card"
               style="width: 18rem; display: inline-table; margin-right: 10px; margin-top: 12px; height:294px;">
-              <img src="cat.jfif" class="card-img-top" alt="...">
+              <img src="{% static '../static/logo.png' %}" class="card-img-top" alt="...">
               <div class="card-body">
        
-                <form action="/course/course_detail/{{course.pk}}" method="POST">
+                <form action="../course_detail" method="get">
                   {% csrf_token %}
                 <p class="card-text" style="color:black;">{{course.title}}</p>
               </form>

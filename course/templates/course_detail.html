@@ -1,4 +1,4 @@
-
+<!-- 
     <style>
         .detail_menu {
             text-align: center;
@@ -58,8 +58,8 @@
 
 </body>
 
-</html>
-<!-- 
+</html> -->
+
 <h2>코스 상세보기</h2>
 <form action="" method="GET" accept="image/*">
 {% csrf_token %}
@@ -70,9 +70,6 @@
     <p> 코멘트 : {{ item.comment }}</p>
 {% endfor %}
 </form>
-<<<<<<< HEAD
- -->
-=======
 
 <h2>리뷰 작성하기</h2>
 <form method="POST" action="{% url 'review_create' my_course.id %}">
@@ -95,4 +92,3 @@
 
 
 
->>>>>>> 77df6cd78deb36b0e9a5063b72fec9ff36566741
